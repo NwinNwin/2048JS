@@ -1,5 +1,5 @@
 let game = [
-  [2, 0, 2, 0],
+  [2, 0, 0, 2],
   [2, 0, 0, 2],
   [0, 0, 2, 0],
   [0, 2, 0, 0],
@@ -42,7 +42,14 @@ function moveRight(game) {
       } else {
         let oldValue = game[i][y];
         game[i][y + zeroCount] = oldValue;
-        game[i][y] = 0;
+        if (zeroCount != 0) {
+          game[i][y] = 0;
+        }
+        if (game[i][y + zeroCount] != 0 && game[i][y + zeroCount] == game[i][y + zeroCount + 1]) {
+          game[i][y + zeroCount + 1] = oldValue * 2;
+          game[i][y + zeroCount] = 0;
+          zeroCount += 1;
+        }
       }
     }
   }
