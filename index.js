@@ -1,8 +1,8 @@
 let game = [
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
+  [2, 0, 2, 0],
+  [2, 0, 0, 2],
+  [0, 0, 2, 0],
+  [0, 2, 0, 0],
 ];
 
 //NEWGAME
@@ -11,8 +11,8 @@ function newGame(game) {
   let column = Math.floor(Math.random() * 4);
   let row2 = Math.floor(Math.random() * 4);
   let column2 = Math.floor(Math.random() * 4);
-  game[row][column] = newBox();
-  game[row2][column2] = newBox();
+  game[row][column] = 2;
+  game[row2][column2] = 2;
   return game;
 }
 
@@ -25,24 +25,24 @@ function newBox() {
   }
 }
 
-game = newGame(game);
-console.log(game);
+// game = newGame(game);
+// console.log(game);
 
 // D on keyboard
 function moveRight(game) {
   console.log("right");
   for (let i = 0; i < game.length; i++) {
     let zeroCount = 0;
-    for (let y = game[i].length - 1; y > 0; y--) {
-      if (game[i][y] == 0) {
+    for (let y = game[i].length - 1; y >= 0; y--) {
+      if (y == 3 && game[i][y] != 0) {
+        continue;
+      } else if (game[i][y] == 0) {
         zeroCount += 1;
       } else {
         let oldValue = game[i][y];
 
         game[i][y + zeroCount] = oldValue;
 
-        // game[i][y] = 0;
-        zeroCount = 0;
         game[i][y] = 0;
       }
     }
