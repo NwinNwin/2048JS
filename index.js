@@ -28,6 +28,20 @@ function newBox() {
 // game = newGame(game);
 // console.log(game);
 
+//Transpose ARRAY
+
+function transpose(game) {
+  let newGame = [];
+  for (let i = 0; i < game.length; i++) {
+    let newRow = [];
+    for (let y = game[i].length - 1; y >= 0; y--) {
+      newRow.push(game[y][i]);
+    }
+    newGame.push(newRow);
+  }
+  return newGame;
+}
+
 // D on keyboard
 function moveRight(game) {
   console.log("right");
@@ -98,7 +112,7 @@ function moveUp() {
 // game = moveRight(game);
 // console.log(game);
 
-console.log(game);
+// console.log(game);
 
 let kb = document.body.addEventListener("keypress", (e) => {
   if (e.key == "a") {
@@ -118,3 +132,18 @@ let kb = document.body.addEventListener("keypress", (e) => {
     console.log(game);
   }
 });
+
+let testTranspose = [
+  [0, 1, 2, 3],
+  [4, 5, 6, 7],
+  [8, 9, 10, 11],
+  [12, 13, 14, 15],
+];
+
+let new3 = transpose(testTranspose);
+
+console.log(testTranspose);
+console.log(new3);
+
+let new4 = transpose(new3);
+console.log(new4);
