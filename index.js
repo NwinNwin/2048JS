@@ -5,12 +5,38 @@ let game = [
   [0, 0, 0, 0],
 ];
 
+let colors2048 = {
+  0: "#cdc1b5",
+  2: "#eee4da",
+  4: "#ede0c8",
+  8: "#f2b179",
+  16: "#f59563",
+  32: "#f67c60",
+  64: "#f65e3b",
+  128: "#edcf73",
+  256: "#edcc62",
+  512: "#edc850",
+  1024: "#edc53f",
+  2048: "#edc22d",
+};
+
 function updateGameUI(game) {
   gameCol = document.querySelectorAll(".game-col");
   colCount = 0;
   for (let i = 0; i < game.length; i++) {
     for (let y of game[i]) {
-      gameCol[colCount].innerHTML = `<h2>${y}</h2>`;
+      if (y != 0) {
+        gameCol[colCount].innerHTML = `<h2>${y}</h2>`;
+        if (y == 2 || y == 4) {
+          gameCol[colCount].style.color = "#786a6a";
+        } else {
+          gameCol[colCount].style.color = "#f8f9ee";
+        }
+      } else {
+        gameCol[colCount].innerHTML = "";
+      }
+      gameCol[colCount].style.backgroundColor = colors2048[y];
+
       colCount += 1;
     }
   }

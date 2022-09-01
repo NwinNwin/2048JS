@@ -13,8 +13,13 @@ body {
   margin-left: auto;
 } */
 .col-3 {
-  border: 2px solid black;
-  padding: 45px;
+  border: 10px solid #bbad9e;
+  padding-top: 30px;
   width: 150px;
   height: 150px;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
 }
