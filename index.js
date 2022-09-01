@@ -110,15 +110,11 @@ function moveLeft(game) {
 }
 // S on keyboard
 function moveDown(game) {
-  transposedList = transpose(game);
-  transposedList = moveLeft(transposedList);
-  return reverseTranspose(transposedList);
+  return reverseTranspose(moveLeft(transpose(game)));
 }
 // W on keyboard
 function moveUp() {
-  transposedList = transpose(game);
-  transposedList = moveRight(transposedList);
-  return reverseTranspose(transposedList);
+  return reverseTranspose(moveRight(transpose(game)));
 }
 
 //EXECUTE
