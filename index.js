@@ -34,7 +34,7 @@ function transpose(game) {
   let newGame = [];
   for (let i = 0; i < game.length; i++) {
     let newRow = [];
-    for (let y = game[i].length - 1; y >= 0; y--) {
+    for (let y = 3; y >= 0; y--) {
       newRow.push(game[y][i]);
     }
     newGame.push(newRow);
@@ -42,6 +42,17 @@ function transpose(game) {
   return newGame;
 }
 
+function reverseTranspose(game) {
+  let newGame = [];
+  for (let i = game.length - 1; i >= 0; i--) {
+    let newRow = [];
+    for (let y = 0; y < 4; y++) {
+      newRow.push(game[y][i]);
+    }
+    newGame.push(newRow);
+  }
+  return newGame;
+}
 // D on keyboard
 function moveRight(game) {
   console.log("right");
@@ -72,7 +83,7 @@ function moveRight(game) {
 }
 
 // A on keyboard
-function moveLeft() {
+function moveLeft(game) {
   console.log("left");
   for (let i = 0; i < game.length; i++) {
     let zeroCount = 0;
@@ -145,5 +156,5 @@ let new3 = transpose(testTranspose);
 console.log(testTranspose);
 console.log(new3);
 
-let new4 = transpose(new3);
+let new4 = reverseTranspose(new3);
 console.log(new4);
