@@ -1,12 +1,23 @@
 let game = [
-  [2, 4, 4, 2],
-  [2, 0, 0, 2],
-  [0, 0, 2, 2],
-  [0, 2, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
 ];
 
+function updateGameUI(game) {
+  gameCol = document.querySelectorAll(".game-col");
+  colCount = 0;
+  for (let i = 0; i < game.length; i++) {
+    for (let y of game[i]) {
+      gameCol[colCount].innerHTML = y;
+      colCount += 1;
+    }
+  }
+}
+
 //NEWGAME
-function newGame(game) {
+function startGame(game) {
   let row = Math.floor(Math.random() * 4);
   let column = Math.floor(Math.random() * 4);
   let row2 = Math.floor(Math.random() * 4);
@@ -26,17 +37,19 @@ function newBox() {
 }
 
 function addNewBoxToGame(game) {
-  while (true) {
+  gameOver = 0;
+  while (gameOver != 16) {
     let row = Math.floor(Math.random() * 4);
     let column = Math.floor(Math.random() * 4);
     if (game[row][column] == 0) {
       game[row][column] = newBox();
       return game;
+    } else {
+      gameOver += 1;
     }
   }
+  document.querySelector("h1").innerHTML = "GAME OVER";
 }
-// game = newGame(game);
-// console.log(game);
 
 //Transpose ARRAY
 
@@ -128,9 +141,8 @@ function moveUp() {
 }
 
 //EXECUTE
-// game = moveRight(game);
-// console.log(game);
-
+game = startGame(game);
+updateGameUI(game);
 console.log(game);
 
 let kb = document.body.addEventListener("keypress", (e) => {
@@ -138,24 +150,28 @@ let kb = document.body.addEventListener("keypress", (e) => {
     console.log("left");
     game = moveLeft(game);
     game = addNewBoxToGame(game);
+    updateGameUI(game);
     console.log(game);
   }
   if (e.key == "d") {
     console.log("right");
     game = moveRight(game);
     game = addNewBoxToGame(game);
+    updateGameUI(game);
     console.log(game);
   }
   if (e.key == "w") {
     console.log("up");
     game = moveUp(game);
     game = addNewBoxToGame(game);
+    updateGameUI(game);
     console.log(game);
   }
   if (e.key == "s") {
     console.log("down");
     game = moveDown(game);
     game = addNewBoxToGame(game);
+    updateGameUI(game);
     console.log(game);
   }
 });
