@@ -25,6 +25,16 @@ function newBox() {
   }
 }
 
+function addNewBoxToGame(game) {
+  while (true) {
+    let row = Math.floor(Math.random() * 4);
+    let column = Math.floor(Math.random() * 4);
+    if (game[row][column] == 0) {
+      game[row][column] = newBox();
+      return game;
+    }
+  }
+}
 // game = newGame(game);
 // console.log(game);
 
@@ -127,21 +137,25 @@ let kb = document.body.addEventListener("keypress", (e) => {
   if (e.key == "a") {
     console.log("left");
     game = moveLeft(game);
+    game = addNewBoxToGame(game);
     console.log(game);
   }
   if (e.key == "d") {
     console.log("right");
     game = moveRight(game);
+    game = addNewBoxToGame(game);
     console.log(game);
   }
   if (e.key == "w") {
     console.log("up");
     game = moveUp(game);
+    game = addNewBoxToGame(game);
     console.log(game);
   }
   if (e.key == "s") {
     console.log("down");
     game = moveDown(game);
+    game = addNewBoxToGame(game);
     console.log(game);
   }
 });
