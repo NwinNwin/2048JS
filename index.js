@@ -10,7 +10,7 @@ function updateGameUI(game) {
   colCount = 0;
   for (let i = 0; i < game.length; i++) {
     for (let y of game[i]) {
-      gameCol[colCount].innerHTML = y;
+      gameCol[colCount].innerHTML = `<h2>${y}</h2>`;
       colCount += 1;
     }
   }
@@ -146,6 +146,7 @@ updateGameUI(game);
 console.log(game);
 
 let kb = document.body.addEventListener("keypress", (e) => {
+  console.log(e.key);
   if (e.key == "a") {
     console.log("left");
     game = moveLeft(game);
