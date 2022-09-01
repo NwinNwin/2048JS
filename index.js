@@ -55,7 +55,6 @@ function reverseTranspose(game) {
 }
 // D on keyboard
 function moveRight(game) {
-  console.log("right");
   for (let i = 0; i < game.length; i++) {
     let zeroCount = 0;
     for (let y = game[i].length - 1; y >= 0; y--) {
@@ -84,7 +83,6 @@ function moveRight(game) {
 
 // A on keyboard
 function moveLeft(game) {
-  console.log("left");
   for (let i = 0; i < game.length; i++) {
     let zeroCount = 0;
     for (let y = 0; y < game.length; y++) {
@@ -111,50 +109,58 @@ function moveLeft(game) {
   return game;
 }
 // S on keyboard
-function moveDown() {
-  console.log("down");
+function moveDown(game) {
+  transposedList = transpose(game);
+  transposedList = moveLeft(transposedList);
+  return reverseTranspose(transposedList);
 }
 // W on keyboard
 function moveUp() {
-  console.log("up");
+  transposedList = transpose(game);
+  transposedList = moveRight(transposedList);
+  return reverseTranspose(transposedList);
 }
 
 //EXECUTE
 // game = moveRight(game);
 // console.log(game);
 
-// console.log(game);
+console.log(game);
 
 let kb = document.body.addEventListener("keypress", (e) => {
   if (e.key == "a") {
+    console.log("left");
     game = moveLeft(game);
     console.log(game);
   }
   if (e.key == "d") {
+    console.log("right");
     game = moveRight(game);
     console.log(game);
   }
   if (e.key == "w") {
-    game = moveDown(game);
+    console.log("up");
+    game = moveUp(game);
     console.log(game);
   }
   if (e.key == "s") {
-    game = moveUp(game);
+    console.log("down");
+    game = moveDown(game);
     console.log(game);
   }
 });
 
-let testTranspose = [
-  [0, 1, 2, 3],
-  [4, 5, 6, 7],
-  [8, 9, 10, 11],
-  [12, 13, 14, 15],
-];
+// let testTranspose = [
+//   [0, 1, 2, 3],
+//   [4, 5, 6, 7],
+//   [8, 9, 10, 11],
+//   [12, 13, 14, 15],
+// ];
 
-let new3 = transpose(testTranspose);
+// let new3 = transpose(testTranspose);
 
-console.log(testTranspose);
-console.log(new3);
+// console.log(testTranspose);
+// console.log(new3);
 
-let new4 = reverseTranspose(new3);
-console.log(new4);
+// let new4 = reverseTranspose(new3);
+// console.log(new4);
