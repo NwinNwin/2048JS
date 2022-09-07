@@ -76,7 +76,7 @@ function addNewBoxToGame(game) {
       ];
 
       const boxTiming = {
-        duration: 100,
+        duration: 200,
         iterations: 1,
       };
 
