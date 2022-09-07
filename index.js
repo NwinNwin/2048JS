@@ -69,6 +69,24 @@ function addNewBoxToGame(game) {
     let column = Math.floor(Math.random() * 4);
     if (game[row][column] == 0) {
       game[row][column] = newBox();
+      //animation
+      const boxZooming = [
+        { transform: " scale(0)" },
+        { transform: " scale(1)" },
+      ];
+
+      const boxTiming = {
+        duration: 100,
+        iterations: 1,
+      };
+
+      console.log(game[row][column], row, column);
+      const boxNum = row * 4 + column;
+      console.log(boxNum);
+      document
+        .querySelectorAll(".game-col")
+        [boxNum].animate(boxZooming, boxTiming);
+
       return game;
     } else {
       gameOver += 1;
