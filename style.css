@@ -17,10 +17,10 @@ body {
   margin-left: auto;
 } */
 .col-3 {
-  border: 10px solid #bbad9e;
-  padding-top: 30px;
-  width: 150px;
-  height: 150px;
+  border: 0.75rem solid #bbad9e;
+  padding-top: 5%;
+  width: 10rem;
+  height: 10rem;
 }
 
 h2 {
@@ -30,4 +30,22 @@ h2 {
 
 .row {
   background-color: #bbad9e;
+}
+
+@media screen and (max-width: 480px) {
+  .col-3 {
+    border: 0.45rem solid #bbad9e;
+    padding-top: 4%;
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  .big-num {
+    padding-top: 10%;
+    font-size: 1.5rem;
+    text-align: center;
+  }
 }

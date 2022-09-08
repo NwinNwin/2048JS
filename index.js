@@ -306,32 +306,70 @@ game = startGame(game);
 updateGameUI(game);
 console.log(game);
 
-let kb = document.body.addEventListener("keypress", (e) => {
+let kb = document.body.addEventListener("keydown", (e) => {
   console.log(e.key);
-  if (e.key == "a") {
+  if (e.key == "a" || e.key == "ArrowLeft") {
     console.log("left");
     game = moveLeft(game);
     game = addNewBoxToGame(game);
     updateGameUI(game);
     console.log(game);
   }
-  if (e.key == "d") {
+  if (e.key == "d" || e.key == "ArrowRight") {
     console.log("right");
     game = moveRight(game);
     game = addNewBoxToGame(game);
     updateGameUI(game);
     console.log(game);
   }
-  if (e.key == "w") {
+  if (e.key == "w" || e.key == "ArrowUp") {
     console.log("up");
     game = moveUp(game);
     game = addNewBoxToGame(game);
     updateGameUI(game);
     console.log(game);
   }
-  if (e.key == "s") {
+  if (e.key == "s" || e.key == "ArrowDown") {
     console.log("down");
     game = moveDown(game);
+    game = addNewBoxToGame(game);
+    updateGameUI(game);
+    console.log(game);
+  }
+});
+
+let start = null;
+document.addEventListener("touchstart", (e) => {
+  const touch = e.changedTouches[0];
+  start = [touch.clientX, touch.clientY];
+});
+document.addEventListener("touchend", (e) => {
+  const touch = e.changedTouches[0];
+  const end = [touch.clientX, touch.clientY];
+  let end0 = end[0] - start[0];
+  let end1 = end[1] - start[1];
+  console.log(end0, end1);
+  if (end0 < 0 && -1 * end0 > -1 * end1) {
+    console.log("left");
+    game = moveLeft(game);
+    game = addNewBoxToGame(game);
+    updateGameUI(game);
+    console.log(game);
+  } else if (end0 > 0 && end0 > end1) {
+    console.log("right");
+    game = moveRight(game);
+    game = addNewBoxToGame(game);
+    updateGameUI(game);
+    console.log(game);
+  } else if (end0 > 0 && end0 < end1) {
+    console.log("down");
+    game = moveDown(game);
+    game = addNewBoxToGame(game);
+    updateGameUI(game);
+    console.log(game);
+  } else if (end0 < 0 && -1 * end0 < -1 * end1) {
+    console.log("up");
+    game = moveUp(game);
     game = addNewBoxToGame(game);
     updateGameUI(game);
     console.log(game);
