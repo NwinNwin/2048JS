@@ -7,7 +7,7 @@ body {
   text-align: center;
 }
 .container-game {
-  padding-top: 2%;
+  padding-top: 0%;
   display: inline-block;
   /* width: 300px; */
 }
@@ -23,6 +23,12 @@ body {
   height: 10rem;
 }
 
+h1 {
+  padding-top: 1%;
+  font-weight: bold;
+  color: darkslategray;
+}
+
 h2 {
   font-size: 3.5rem;
   font-weight: bold;
@@ -34,15 +40,31 @@ h2 {
 
 #restart-button {
   display: block;
-  margin: 3% auto;
+  margin: 1% auto;
   border-radius: 15%;
   background-color: #f2b179;
   color: white;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border: 0.45rem solid #bbad9e;
 }
-@media screen and (max-width: 480px) {
+#restart-button:active {
+  background-color: #f2d3b8;
+  transform: translateY(4px);
+}
+
+#score-box {
+  background-color: #bbada0;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 0.45rem solid #bbad9e;
+  color: white;
+  border-radius: 5%;
+  padding: 0;
+  margin-bottom: 1.2%;
+}
+
+@media screen and (max-width: 680px) {
   .col-3 {
     border: 0.45rem solid #bbad9e;
     padding-top: 4%;

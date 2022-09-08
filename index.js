@@ -5,6 +5,8 @@ let game = [
   [0, 0, 0, 0],
 ];
 
+let score = 0;
+
 let colors2048 = {
   0: "#cdc1b5",
   2: "#eee4da",
@@ -237,6 +239,8 @@ function moveRight(game) {
           if (game[i][y - j] == game[i][y]) {
             let oldValue = game[i][y];
             game[i][y + zeroCount] = oldValue * 2;
+            score += oldValue * 2;
+            document.querySelector("#score-box").innerHTML = `score: ${score}`;
             if (zeroCount != 0) {
               game[i][y] = 0;
             }
@@ -273,6 +277,8 @@ function moveLeft(game) {
           if (game[i][y + j] == game[i][y]) {
             let oldValue = game[i][y];
             game[i][y - zeroCount] = oldValue * 2;
+            score += oldValue * 2;
+            document.querySelector("#score-box").innerHTML = `score: ${score}`;
             if (zeroCount != 0) {
               game[i][y] = 0;
             }
@@ -386,4 +392,7 @@ document.querySelector("#restart-button").addEventListener("click", (e) => {
   game = startGame(game);
   updateGameUI(game);
   console.log(game);
+  score = 0;
+
+  document.querySelector("#score-box").innerHTML = `score: ${score}`;
 });
