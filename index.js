@@ -395,4 +395,5 @@ document.querySelector("#restart-button").addEventListener("click", (e) => {
   score = 0;
 
   document.querySelector("#score-box").innerHTML = `score: ${score}`;
+  document.querySelector("h1").innerHTML = "Nwin's 2048";
 });
