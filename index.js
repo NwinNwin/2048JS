@@ -375,3 +375,15 @@ document.addEventListener("touchend", (e) => {
     console.log(game);
   }
 });
+
+document.querySelector("#restart-button").addEventListener("click", (e) => {
+  game = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
+  game = startGame(game);
+  updateGameUI(game);
+  console.log(game);
+});

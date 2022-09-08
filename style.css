@@ -7,7 +7,7 @@ body {
   text-align: center;
 }
 .container-game {
-  padding-top: 10%;
+  padding-top: 2%;
   display: inline-block;
   /* width: 300px; */
 }
@@ -32,6 +32,16 @@ h2 {
   background-color: #bbad9e;
 }
 
+#restart-button {
+  display: block;
+  margin: 3% auto;
+  border-radius: 15%;
+  background-color: #f2b179;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  border: 0.45rem solid #bbad9e;
+}
 @media screen and (max-width: 480px) {
   .col-3 {
     border: 0.45rem solid #bbad9e;
@@ -47,5 +57,9 @@ h2 {
     padding-top: 10%;
     font-size: 1.5rem;
     text-align: center;
+  }
+  #restart-button {
+    font-size: 1rem;
+    border: 0.2rem solid #bbad9e;
   }
 }
