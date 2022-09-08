@@ -205,29 +205,34 @@ function moveRight(game) {
   for (let i = 0; i < game.length; i++) {
     let zeroCount = 0;
     for (let y = game[i].length - 1; y >= 0; y--) {
-      if (y == 3 && game[i][y] != 0) {
-        continue;
-        //ignore if number is 0
-      } else if (game[i][y] == 0) {
+      if (game[i][y] == 0) {
         zeroCount += 1;
       } else {
-        let oldValue = game[i][y];
-        game[i][y + zeroCount] = oldValue;
-        if (zeroCount != 0) {
-          game[i][y] = 0;
+        needToAdd = false;
+        for (let j = 1; j <= 4 - y; j++) {
+          if (game[i][y - j] != 0 && game[i][y - j] != game[i][y]) {
+            break;
+          }
+          if (game[i][y - j] == game[i][y]) {
+            let oldValue = game[i][y];
+            game[i][y + zeroCount] = oldValue * 2;
+            if (zeroCount != 0) {
+              game[i][y] = 0;
+            }
+            game[i][y - j] = 0;
+            needToAdd = true;
+            break;
+          }
         }
-        if (
-          game[i][y + zeroCount] != 0 &&
-          game[i][y + zeroCount] == game[i][y + zeroCount + 1]
-        ) {
-          game[i][y + zeroCount + 1] = oldValue * 2;
-          game[i][y + zeroCount] = 0;
-          zeroCount += 1;
+        if (needToAdd == false) {
+          game[i][y + zeroCount] = game[i][y];
+          if (zeroCount != 0) {
+            game[i][y] = 0;
+          }
         }
       }
     }
   }
-
   return game;
 }
 
@@ -236,29 +241,34 @@ function moveLeft(game) {
   for (let i = 0; i < game.length; i++) {
     let zeroCount = 0;
     for (let y = 0; y < game.length; y++) {
-      if (y == 0 && game[i][y] != 0) {
-        continue;
-      } else if (game[i][y] == 0) {
-        //ignore if number is 0
+      if (game[i][y] == 0) {
         zeroCount += 1;
       } else {
-        let oldValue = game[i][y];
-        game[i][y - zeroCount] = oldValue;
-        if (zeroCount != 0) {
-          game[i][y] = 0;
+        needToAdd = false;
+        for (let j = 1; j <= 4 - y; j++) {
+          if (game[i][y + j] != 0 && game[i][y + j] != game[i][y]) {
+            break;
+          }
+          if (game[i][y + j] == game[i][y]) {
+            let oldValue = game[i][y];
+            game[i][y - zeroCount] = oldValue * 2;
+            if (zeroCount != 0) {
+              game[i][y] = 0;
+            }
+            game[i][y + j] = 0;
+            needToAdd = true;
+            break;
+          }
         }
-        if (
-          game[i][y - zeroCount] != 0 &&
-          game[i][y - zeroCount] == game[i][y - zeroCount - 1]
-        ) {
-          game[i][y - zeroCount - 1] = oldValue * 2;
-          game[i][y - zeroCount] = 0;
-          zeroCount += 1;
+        if (needToAdd == false) {
+          game[i][y - zeroCount] = game[i][y];
+          if (zeroCount != 0) {
+            game[i][y] = 0;
+          }
         }
       }
     }
   }
-
   return game;
 }
 // S on keyboard
