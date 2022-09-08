@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
+.big-num {
+  font-size: 3rem;
+  text-align: center;
+}
 .container-game {
   padding-top: 10%;
   display: inline-block;

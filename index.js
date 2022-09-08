@@ -27,6 +27,9 @@ function updateGameUI(game) {
     for (let y of game[i]) {
       if (y != 0) {
         gameCol[colCount].innerHTML = `<h2>${y}</h2>`;
+        if (y == 1024 || y == 2048) {
+          gameCol[colCount].innerHTML = `<h2 class = "big-num">${y}</h2>`;
+        }
         if (y == 2 || y == 4) {
           gameCol[colCount].style.color = "#786a6a";
         } else {
@@ -63,6 +66,13 @@ function newBox() {
 }
 
 function addNewBoxToGame(game) {
+  if (checkWin(game)) {
+    console.log("YOU WON!");
+    console.log(game);
+    document.querySelector("h1").innerHTML = "YOU WON!";
+    updateGameUI(game);
+    return;
+  }
   gameOver = 0;
   while (gameOver != 16) {
     let row = Math.floor(Math.random() * 4);
@@ -99,6 +109,17 @@ function addNewBoxToGame(game) {
   } else {
     return game;
   }
+}
+
+function checkWin(game) {
+  for (let i = 0; i < game.length; i++) {
+    for (let y = 0; y < game[i].length; y++) {
+      if (game[i][y] == 2048) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 function checkGameOver(game) {
