@@ -46,7 +46,7 @@ h2 {
   color: white;
   font-weight: bold;
   font-size: 1.5rem;
-  border: 0.45rem solid #bbad9e;
+  border: 0.3rem solid #bbad9e;
 }
 #restart-button:active {
   background-color: #f2d3b8;
@@ -83,5 +83,8 @@ h2 {
   #restart-button {
     font-size: 1rem;
     border: 0.2rem solid #bbad9e;
+  }
+  #score-box {
+    font-size: 1rem;
   }
 }
